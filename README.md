@@ -33,7 +33,6 @@ $ crossplane xpkg build -f package --embed-runtime-image=runtime
 ```
 
 [functions]: https://docs.crossplane.io/latest/concepts/composition-functions
-[python]: https://python.io
-[package docs]: https://pkg.go.dev/github.com/crossplane/function-sdk-go
+[python]: https://python.org
 [docker]: https://www.docker.com
 [cli]: https://docs.crossplane.io/latest/cli
