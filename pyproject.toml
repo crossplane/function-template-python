@@ -40,6 +40,9 @@ Source = "https://github.com/crossplane/function-template-python"
 [project.scripts]
 function = "function.main:cli"
 
+[tool.hatch.build.targets.wheel]
+packages = ["function"]
+
 [tool.hatch.version]
 source = "vcs"
 
