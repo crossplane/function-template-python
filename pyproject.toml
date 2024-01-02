@@ -52,7 +52,7 @@ allow-direct-references = true
 [tool.hatch.envs.default]
 type = "virtual"
 path = ".venv-default"
-dependencies = ["ipython==8.18.1"]
+dependencies = ["ipython==8.19.0"]
 
 [tool.hatch.envs.lint]
 type = "virtual"
