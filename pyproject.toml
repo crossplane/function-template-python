@@ -58,7 +58,7 @@ dependencies = ["ipython==8.19.0"]
 type = "virtual"
 detached = true
 path = ".venv-lint"
-dependencies = ["ruff==0.1.10"]
+dependencies = ["ruff==0.1.11"]
 
 [tool.hatch.envs.lint.scripts]
 check = "ruff check function tests && ruff format --diff function tests"
