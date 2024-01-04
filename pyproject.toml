@@ -1,9 +1,9 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "function-template-python"
+name = "function"
 description = 'A composition function'
 readme = "README.md"
 requires-python = ">=3.11"
@@ -17,17 +17,9 @@ classifiers = [
 ]
 
 dependencies = [
-  # TODO(negz): Push to PyPI instead. We're currently waiting on our request
-  # for a new PyPI org for Crossplane to be approved. Once we're using a PyPI
-  # package (e.g. a wheel), confirm that run_function_pb2.pyi is installed. This
-  # interface file makes working with RunFunctionRequest and RunFunctionResponse
-  # a lot easier, since it contains all the type metadata.
-  "function-sdk-python @ git+https://github.com/crossplane/function-sdk-python",
-
-  # Pin at least the things we import directly.
+  "crossplane-function-sdk-python==0.1.0",
   "click==8.1.7",
   "grpcio==1.60.0",
-  "protobuf==4.25.1",
 ]
 
 dynamic = ["version"]
@@ -44,10 +36,11 @@ function = "function.main:cli"
 packages = ["function"]
 
 [tool.hatch.version]
-source = "vcs"
+path = "function/__version__.py"
+validate-bump = false # Allow going from 0.0.0.dev0+x to 0.0.0.dev0+y.
 
-[tool.hatch.metadata]
-allow-direct-references = true
+[tool.hatch.build.targets.wheel]
+packages = ["function"]
 
 [tool.hatch.envs.default]
 type = "virtual"
