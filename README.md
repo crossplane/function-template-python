@@ -10,7 +10,7 @@ To learn how to use this template:
 If you just want to jump in and get started:
 
 1. Replace `function-template-python` with your function's name in
-   `pyproject.toml` and `package/crossplane.yaml`.
+   `package/crossplane.yaml`.
 1. Add your logic to `RunFunction` in `function/fn.py`
 1. Add tests for your logic in `test/test_fn.py`
 1. Update this file, `README.md`, to be about your function!
