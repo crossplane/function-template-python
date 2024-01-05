@@ -37,10 +37,7 @@ packages = ["function"]
 
 [tool.hatch.version]
 path = "function/__version__.py"
-validate-bump = false # Allow going from 0.0.0.dev0+x to 0.0.0.dev0+y.
-
-[tool.hatch.build.targets.wheel]
-packages = ["function"]
+validate-bump = false            # Allow going from 0.0.0.dev0+x to 0.0.0.dev0+y.
 
 [tool.hatch.envs.default]
 type = "virtual"
