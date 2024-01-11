@@ -19,6 +19,9 @@ This template uses [Python][python], [Docker][docker], and the [Crossplane
 CLI][cli] to build functions.
 
 ```shell
+# Run the code in development mode, for crossplane beta render
+hatch run development
+
 # Lint the code - see pyproject.toml
 hatch run lint:check
 
