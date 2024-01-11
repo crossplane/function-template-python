@@ -5,7 +5,7 @@ with these example manifests.
 
 ```shell
 # Run the function locally
-$ hatch run python function/main.py --insecure --debug
+$ hatch run development
 ```
 
 ```shell

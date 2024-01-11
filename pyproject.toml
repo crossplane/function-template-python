@@ -44,6 +44,9 @@ type = "virtual"
 path = ".venv-default"
 dependencies = ["ipython==8.20.0"]
 
+[tool.hatch.envs.default.scripts]
+development = "python function/main.py --insecure --debug"
+
 [tool.hatch.envs.lint]
 type = "virtual"
 detached = true
