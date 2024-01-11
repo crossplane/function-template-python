@@ -12,6 +12,9 @@ from function import fn
 
 class TestFunctionRunner(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
+        # Allow larger diffs, since we diff large strings of JSON.
+        self.maxDiff = 2000
+
         logging.configure(level=logging.Level.DISABLED)
 
     async def test_run_function(self) -> None:
@@ -46,8 +49,8 @@ class TestFunctionRunner(unittest.IsolatedAsyncioTestCase):
         for case in cases:
             got = await runner.RunFunction(case.req, None)
             self.assertEqual(
-                json_format.MessageToJson(case.want),
-                json_format.MessageToJson(got),
+                json_format.MessageToDict(got),
+                json_format.MessageToDict(case.want),
                 "-want, +got",
             )
 
