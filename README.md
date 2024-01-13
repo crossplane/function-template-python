@@ -5,7 +5,9 @@ A template for writing a [composition function][functions] in [Python][python].
 
 To learn how to use this template:
 
+* [Follow the guide to writing a composition function in Python][function guide]
 * [Learn about how composition functions work][functions]
+* [Read the function-sdk-go package documentation][package docs]
 
 If you just want to jump in and get started:
 
@@ -36,6 +38,8 @@ $ crossplane xpkg build -f package --embed-runtime-image=runtime
 ```
 
 [functions]: https://docs.crossplane.io/latest/concepts/composition-functions
+[function guide]: https://docs.crossplane.io/knowledge-base/guides/write-a-composition-function-in-python
+[package docs]: https://crossplane.github.io/function-sdk-python
 [python]: https://python.org
 [docker]: https://www.docker.com
 [cli]: https://docs.crossplane.io/latest/cli
