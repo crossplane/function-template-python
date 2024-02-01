@@ -7,7 +7,7 @@ To learn how to use this template:
 
 * [Follow the guide to writing a composition function in Python][function guide]
 * [Learn about how composition functions work][functions]
-* [Read the function-sdk-go package documentation][package docs]
+* [Read the function-sdk-python package documentation][package docs]
 
 If you just want to jump in and get started:
 
