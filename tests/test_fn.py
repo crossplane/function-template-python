@@ -49,8 +49,8 @@ class TestFunctionRunner(unittest.IsolatedAsyncioTestCase):
         for case in cases:
             got = await runner.RunFunction(case.req, None)
             self.assertEqual(
-                json_format.MessageToDict(got),
                 json_format.MessageToDict(case.want),
+                json_format.MessageToDict(got),
                 "-want, +got",
             )
 
