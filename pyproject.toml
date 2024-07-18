@@ -51,7 +51,7 @@ development = "python function/main.py --insecure --debug"
 type = "virtual"
 detached = true
 path = ".venv-lint"
-dependencies = ["ruff==0.5.2"]
+dependencies = ["ruff==0.5.3"]
 
 [tool.hatch.envs.lint.scripts]
 check = "ruff check function tests && ruff format --diff function tests"
