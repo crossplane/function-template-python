@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 dependencies = [
-  "crossplane-function-sdk-python==0.2.0",
+  "crossplane-function-sdk-python==0.3.0",
   "click==8.1.7",
   "grpcio==1.65.4",
 ]
