@@ -2,7 +2,7 @@ import dataclasses
 import unittest
 
 from crossplane.function import logging, resource
-from crossplane.function.proto.v1beta1 import run_function_pb2 as fnv1beta1
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 from google.protobuf import duration_pb2 as durationpb
 from google.protobuf import json_format
 from google.protobuf import struct_pb2 as structpb
@@ -21,21 +21,21 @@ class TestFunctionRunner(unittest.IsolatedAsyncioTestCase):
         @dataclasses.dataclass
         class TestCase:
             reason: str
-            req: fnv1beta1.RunFunctionRequest
-            want: fnv1beta1.RunFunctionResponse
+            req: fnv1.RunFunctionRequest
+            want: fnv1.RunFunctionResponse
 
         cases = [
             TestCase(
                 reason="The function should return the input as a result.",
-                req=fnv1beta1.RunFunctionRequest(
+                req=fnv1.RunFunctionRequest(
                     input=resource.dict_to_struct({"example": "Hello, world"})
                 ),
-                want=fnv1beta1.RunFunctionResponse(
-                    meta=fnv1beta1.ResponseMeta(ttl=durationpb.Duration(seconds=60)),
-                    desired=fnv1beta1.State(),
+                want=fnv1.RunFunctionResponse(
+                    meta=fnv1.ResponseMeta(ttl=durationpb.Duration(seconds=60)),
+                    desired=fnv1.State(),
                     results=[
-                        fnv1beta1.Result(
-                            severity=fnv1beta1.SEVERITY_NORMAL,
+                        fnv1.Result(
+                            severity=fnv1.SEVERITY_NORMAL,
                             message="I was run with input Hello, world!",
                         )
                     ],
