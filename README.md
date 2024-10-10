@@ -25,11 +25,11 @@ CLI][cli] to build functions.
 # Run the code in development mode, for crossplane beta render
 hatch run development
 
-# Lint the code - see pyproject.toml
-hatch run lint:check
+# Lint and format the code - see pyproject.toml
+hatch fmt
 
 # Run unit tests - see tests/test_fn.py
-hatch run test:unit
+hatch test
 
 # Build the function's runtime image - see Dockerfile
 $ docker build . --tag=runtime
