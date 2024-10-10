@@ -14,7 +14,8 @@ on:
 
 env:
   # Common versions
-  PYTHON_VERSION: '3.11.5'
+  PYTHON_VERSION: '3.11'
+  HATCH_VERSION: '1.12.0'
   DOCKER_BUILDX_VERSION: 'v0.11.2'
 
   # These environment variables are important to the Crossplane CLI install.sh
@@ -47,10 +48,10 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Setup Hatch
-        run: pipx install hatch==1.7.0
+        run: pipx install hatch==${{ env.HATCH_VERSION }}
 
       - name: Lint
-        run: hatch run lint:check
+        run: hatch fmt
 
   unit-test:
     runs-on: ubuntu-22.04
@@ -64,10 +65,10 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Setup Hatch
-        run: pipx install hatch==1.7.0
+        run: pipx install hatch==${{ env.HATCH_VERSION }}
 
       - name: Run Unit Tests
-        run: hatch run test:unit
+        run: hatch test --all --randomize
 
   # We want to build most packages for the amd64 and arm64 architectures. To
   # speed this up we build single-platform packages in parallel. We then upload

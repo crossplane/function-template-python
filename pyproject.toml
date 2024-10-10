@@ -48,21 +48,10 @@ dependencies = ["ipython==8.28.0"]
 [tool.hatch.envs.default.scripts]
 development = "python function/main.py --insecure --debug"
 
-[tool.hatch.envs.lint]
-type = "virtual"
-detached = true
-path = ".venv-lint"
+# This special environment is used by hatch fmt.
+[tool.hatch.envs.hatch-static-analysis]
 dependencies = ["ruff==0.6.9"]
-
-[tool.hatch.envs.lint.scripts]
-check = "ruff check function tests && ruff format --diff function tests"
-
-[tool.hatch.envs.test]
-type = "virtual"
-path = ".venv-test"
-
-[tool.hatch.envs.test.scripts]
-unit = "python -m unittest tests/*.py"
+config-path = "none"           # Disable Hatch's default Ruff config.
 
 [tool.ruff]
 target-version = "py311"
