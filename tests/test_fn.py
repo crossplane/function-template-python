@@ -28,17 +28,36 @@ class TestFunctionRunner(unittest.IsolatedAsyncioTestCase):
             TestCase(
                 reason="The function should return the input as a result.",
                 req=fnv1.RunFunctionRequest(
-                    input=resource.dict_to_struct({"example": "Hello, world"})
+                    input=resource.dict_to_struct({"version": "v1beta2"}),
+                    observed=fnv1.State(
+                        composite=fnv1.Resource(
+                            resource=resource.dict_to_struct(
+                                {
+                                    "apiVersion": "example.crossplane.io/v1",
+                                    "kind": "XR",
+                                    "spec": {"region": "us-west-2"},
+                                }
+                            ),
+                        ),
+                    ),
                 ),
                 want=fnv1.RunFunctionResponse(
                     meta=fnv1.ResponseMeta(ttl=durationpb.Duration(seconds=60)),
-                    desired=fnv1.State(),
-                    results=[
-                        fnv1.Result(
-                            severity=fnv1.SEVERITY_NORMAL,
-                            message="I was run with input Hello, world!",
-                        )
-                    ],
+                    desired=fnv1.State(
+                        resources={
+                            "bucket": fnv1.Resource(
+                                resource=resource.dict_to_struct(
+                                    {
+                                        "apiVersion": "s3.aws.upbound.io/v1beta2",
+                                        "kind": "Bucket",
+                                        "spec": {
+                                            "forProvider": {"region": "us-west-2"},
+                                        },
+                                    }
+                                ),
+                            ),
+                        },
+                    ),
                     context=structpb.Struct(),
                 ),
             ),

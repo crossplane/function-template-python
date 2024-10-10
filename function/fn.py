@@ -1,7 +1,7 @@
 """A Crossplane composition function."""
 
 import grpc
-from crossplane.function import logging, response
+from crossplane.function import logging, resource, response
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 from crossplane.function.proto.v1 import run_function_pb2_grpc as grpcv1
 
@@ -22,12 +22,18 @@ class FunctionRunner(grpcv1.FunctionRunnerService):
 
         rsp = response.to(req)
 
-        example = ""
-        if "example" in req.input:
-            example = req.input["example"]
+        version = req.input["version"]
+        region = req.observed.composite.resource["spec"]["region"]
 
-        # TODO: Add your function logic here!
-        response.normal(rsp, f"I was run with input {example}!")
-        log.info("I was run!", input=example)
+        resource.update(
+            rsp.desired.resources["bucket"],
+            {
+                "apiVersion": f"s3.aws.upbound.io/{version}",
+                "kind": "Bucket",
+                "spec": {
+                    "forProvider": {"region": region},
+                },
+            },
+        )
 
         return rsp
