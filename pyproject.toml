@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "function"
 description = 'A composition function'
 readme = "README.md"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.11,<3.12"
 license = "Apache-2.0"
 keywords = []
 authors = [{ name = "Crossplane Maintainers", email = "info@crossplane.io" }]
@@ -14,7 +14,6 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
 ]
 
 dependencies = [
