@@ -31,7 +31,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Copy the function venv to our runtime stage. It's important that the path be
 # the same as in the build stage, to avoid shebang paths and symlinks breaking. 
-FROM --platform=${BUILDPLATFORM} gcr.io/distroless/python3-debian12 AS image
+FROM gcr.io/distroless/python3-debian12 AS image
 WORKDIR /
 COPY --from=build /venv/fn /venv/fn
 EXPOSE 9443
