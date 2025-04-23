@@ -43,7 +43,7 @@ validate-bump = false            # Allow going from 0.0.0.dev0+x to 0.0.0.dev0+y
 [tool.hatch.envs.default]
 type = "virtual"
 path = ".venv-default"
-dependencies = ["ipython==9.0.2"]
+dependencies = ["ipython==9.1.0"]
 
 [tool.hatch.envs.default.scripts]
 development = "python function/main.py --insecure --debug"
