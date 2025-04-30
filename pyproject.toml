@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "function"
 description = 'A composition function'
 readme = "README.md"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.13,<3.14"
 license = "Apache-2.0"
 keywords = []
 authors = [{ name = "Crossplane Maintainers", email = "info@crossplane.io" }]
