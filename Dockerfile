@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # It's important that this is Debian 12 to match the distroless image.
-FROM debian:12-slim AS build
+FROM debian:13-slim AS build
 
 RUN --mount=type=cache,target=/var/lib/apt/lists \
     --mount=type=cache,target=/var/cache/apt \
