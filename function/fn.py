@@ -12,6 +12,7 @@ class FunctionRunner(grpcv1.FunctionRunnerService):
     def __init__(self):
         """Create a new FunctionRunner."""
         self.log = logging.get_logger()
+        self.log.info("Starting function-template-python")
 
     async def RunFunction(
         self, req: fnv1.RunFunctionRequest, _: grpc.aio.ServicerContext

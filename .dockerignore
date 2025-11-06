@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# Except
+!function/
+!function/**
+!pyproject.toml
+!README.md

@@ -6,20 +6,20 @@ build-backend = "hatchling.build"
 name = "function"
 description = 'A composition function'
 readme = "README.md"
-requires-python = ">=3.11,<3.12"
+requires-python = ">=3.12,<3.14"
 license = "Apache-2.0"
 keywords = []
 authors = [{ name = "Crossplane Maintainers", email = "info@crossplane.io" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 
 dependencies = [
-  "crossplane-function-sdk-python==0.8.0",
+  "crossplane-function-sdk-python==0.9.0",
   "click==8.3.0",
-  "grpcio==1.73.1",
 ]
 
 dynamic = ["version"]
@@ -42,21 +42,34 @@ validate-bump = false            # Allow going from 0.0.0.dev0+x to 0.0.0.dev0+y
 [tool.hatch.envs.default]
 type = "virtual"
 path = ".venv-default"
-dependencies = ["ipython==9.4.0"]
+dependencies = ["ipython==9.7.0"]
 
 [tool.hatch.envs.default.scripts]
 development = "python function/main.py --insecure --debug"
 
-# This special environment is used by hatch fmt.
-[tool.hatch.envs.hatch-static-analysis]
-dependencies = ["ruff==0.12.7"]
-config-path = "none"           # Disable Hatch's default Ruff config.
+[tool.hatch.envs.lint]
+type = "virtual"
+detached = true
+path = ".venv-lint"
+dependencies = ["ruff==0.14.3"]
+
+[tool.hatch.envs.lint.scripts]
+check = "ruff check function tests --fix && ruff format --diff function tests"
+
+[tool.hatch.envs.test]
+type = "virtual"
+path = ".venv-test"
+
+[tool.hatch.envs.test.scripts]
+unit = "python -m unittest tests/*.py"
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py313"
+line-length = 100
 exclude = ["function/proto/*"]
 
 [tool.ruff.lint]
+preview = true
 select = [
   "A",
   "ARG",
