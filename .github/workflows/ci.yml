@@ -21,7 +21,7 @@ env:
   # These environment variables are important to the Crossplane CLI install.sh
   # script. They determine what version it installs.
   XP_CHANNEL: stable
-  XP_VERSION: v2.2.0
+  XP_VERSION: v2.3.0
 
   # The package to push, without a version tag. The default matches GitHub. For
   # example xpkg.crossplane.io/crossplane/function-template-go. Note that
@@ -89,7 +89,6 @@ jobs:
         uses: docker/setup-buildx-action@v4
         with:
           version: ${{ env.DOCKER_BUILDX_VERSION }}
-          install: true
 
       - name: Checkout
         uses: actions/checkout@v7
